@@ -1,11 +1,14 @@
 import java.util.ArrayList;
+import java.util.ListIterator;
 
+//Component
 public abstract class QuestionComponent {
 
 	public abstract void print();
 
 }
 
+//leaf
 class Question extends QuestionComponent {
 
 
@@ -25,6 +28,7 @@ class Question extends QuestionComponent {
 
 }
 
+//Composite
 class QuestionComposite extends QuestionComponent {
 
 	ArrayList<QuestionComponent> list;
@@ -44,6 +48,15 @@ class QuestionComposite extends QuestionComponent {
 	@Override
 	public void print() {
 		// TODO Auto-generated method stub
+		
+		ListIterator<QuestionComponent> iterator = (ListIterator<QuestionComponent>) list.iterator();
+		
+		while (iterator.hasNext()) {
+			
+			QuestionComponent c = iterator.next();
+			c.print();
+			
+		}
 		
 	}
 	
